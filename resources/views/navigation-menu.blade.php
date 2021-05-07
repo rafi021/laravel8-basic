@@ -22,7 +22,7 @@
                         {{ __('About') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
-                        {{ __('Contact') }}
+                        {{ __('Contact ') }}
                     </x-jet-nav-link>
                 </div>
             </div>
