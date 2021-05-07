@@ -19,5 +19,6 @@ Route::get('/', function () {
 });
 
 // Load a page from Controller and using view
-Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/about', [PageController::class, 'about'])->middleware('checkage')->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/home', [PageController::class, 'home'])->name('home');
