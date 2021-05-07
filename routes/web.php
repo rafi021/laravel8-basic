@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Load a page using view
+Route::get('/about', function () {
+    return view ('about');
+});
+
+// Load only string/message
+Route::get('/contact', function () {
+    echo "This is contact page";
+});
