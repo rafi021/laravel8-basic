@@ -1,1 +1,8 @@
-This is home page
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Home Page') }}
+        </h2>
+    </x-slot>
+    this is Home Page
+</x-app-layout>
