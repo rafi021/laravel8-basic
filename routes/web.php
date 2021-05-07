@@ -22,3 +22,6 @@ Route::get('/', function () {
 Route::get('/about', [PageController::class, 'about'])->middleware('checkage')->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/home', [PageController::class, 'home'])->name('home');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
