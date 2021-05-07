@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Load a page using view
-Route::get('/about', function () {
-    return view ('about');
-});
-
-// Load only string/message
-Route::get('/contact', function () {
-    echo "This is contact page";
-});
+// Load a page from Controller and using view
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
