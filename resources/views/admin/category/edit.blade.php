@@ -6,13 +6,13 @@
     </x-slot>
     <div class="container">
         <div class="row py-8">
-            @if (session('success'))
+            @if (session('update-success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Congrats!</strong> {{ session('success') }}
+                <strong>Congrats!</strong> {{ session('update-success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-            <div class="col-md-8">
+            {{-- <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         List of All Category
@@ -44,25 +44,26 @@
                         </table>
                         {{ $categories->links() }}
                 </div>
-            </div>
-            <div class="col-md-4">
+            </div> --}}
+            <div class="col-md-4 m-auto">
                 
                 <div class="card">
                     <div class="card-header">
-                        Add Category
+                        Edit Category
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('category.store') }}" method="post">
+                        <form action="{{ route('category.update', $category) }}" method="post">
+                            @method('PUT')
                             @csrf
                             <div class="form-group">
                                 <label for="categoryNameInput">Category Name</label>
-                                <input type="text" name="category_name" id="categoryNameInput" class="form-control" aria-describedby="categoryHelp">
+                                <input type="text" name="category_name" id="categoryNameInput" class="form-control" aria-describedby="categoryHelp" value="{{ $category->category_name }}">
                                 @error('category_name')
                                     <span class="alert text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group py-2">
-                                <button type="submit" class="btn btn-primary">Add Category</button>
+                                <button type="submit" class="btn btn-info">Edit Category</button>
                             </div>
                         </form>
                     </div>
