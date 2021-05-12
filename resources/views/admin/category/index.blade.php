@@ -29,7 +29,7 @@
                             <tbody>
                                 @foreach ($categories as $category)
                                 <tr>
-                                    <th scope="row">{{ $loop->index+1 }}</th>
+                                    <th scope="row">{{ $categories->firstItem()+$loop->index }}</th>
                                     <td>{{ $category->category_name }}</td>
                                     <td>{{ $category->category_slug }}</td>
                                     <td>{{ $category->user->name }}</td>
@@ -37,6 +37,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $categories->links() }}
                 </div>
             </div>
             <div class="col-md-4">
@@ -60,7 +61,6 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
