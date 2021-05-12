@@ -19,7 +19,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::with(['user'])->latest()->paginate(4);
-        return view ('admin.category.index', compact('categories'));
+        $trashedCategpries = Category::onlyTrashed()->with(['user'])->paginate(5);
+        return view ('admin.category.index', compact('categories', 'trashedCategpries'));
     }
 
     /**
@@ -89,7 +90,7 @@ class CategoryController extends Controller
         ]);
 
         return redirect()->route('category.index')->with([
-            'update-success' => 'Category updated Successfully!!'
+            'success' => 'Category updated Successfully!!'
         ]);
     }
 
@@ -99,8 +100,30 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('category.index')->with([
+            'success' => 'Category trashed Successfully!!'
+        ]);
+    }
+
+    public function Restore($id)
+    {
+        $category = Category::withTrashed()->findOrFail($id);
+        if($category){
+            $category->restore();
+        }
+        return redirect()->back()->with([
+            'success' => 'Category restore Successfully!!'
+        ]);
+    }
+
+    public function forceDelete($id)
+    {
+        Category::onlyTrashed()->findOrFail($id)->forceDelete();
+        return redirect()->route('category.index')->with([
+            'success' => 'Category deleted Successfully!!'
+        ]);
     }
 }

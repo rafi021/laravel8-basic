@@ -32,3 +32,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // Category routes
 Route::resource('/category', CategoryController::class);
+Route::get('/category/restore/{category}', [CategoryController::class, 'Restore'])->name('category.restore');
+Route::post('/category/force-delete/{category}', [CategoryController::class, 'forceDelete'])->name('category.forceDelete');
