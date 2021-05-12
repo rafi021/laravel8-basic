@@ -32,7 +32,7 @@
                                     <th scope="row">{{ $loop->index+1 }}</th>
                                     <td>{{ $category->category_name }}</td>
                                     <td>{{ $category->category_slug }}</td>
-                                    <td>{{ App\Models\User::find($category->user_id)->name }}</td>
+                                    <td>{{ $category->user->name }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

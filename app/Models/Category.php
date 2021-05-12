@@ -14,4 +14,9 @@ class Category extends Model
         'category_name',
         'category_slug',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

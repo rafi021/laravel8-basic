@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::with(['user'])->latest()->get();
         return view ('admin.category.index', compact('categories'));
     }
 
