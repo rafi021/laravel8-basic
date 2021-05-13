@@ -7,6 +7,7 @@ use App\Http\Requests\BrandUpdateRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Image;
 
 class BrandController extends Controller
 {
@@ -40,12 +41,19 @@ class BrandController extends Controller
     public function store(BrandStoreRequest $request)
     {
         $brand_image = $request->file('brand_image');
-        $name_generation = hexdec(uniqid());
+        
+        // $name_generation = hexdec(uniqid());
+        // $image_ext = strtolower($brand_image->getClientOriginalExtension());
+        // $image_name = $name_generation.'.'.$image_ext;
+        // $upload_location = 'image/brand/';
+        // $last_image = $upload_location.$image_name;
+        // $brand_image->move($upload_location, $image_name);
+
         $image_ext = strtolower($brand_image->getClientOriginalExtension());
-        $image_name = $name_generation.'.'.$image_ext;
+        $name_generation = hexdec(uniqid()).'.'.$image_ext;
         $upload_location = 'image/brand/';
-        $last_image = $upload_location.$image_name;
-        $brand_image->move($upload_location, $image_name);
+        Image::make($brand_image)->resize(300,200)->save($upload_location.$name_generation);
+        $last_image = $upload_location.$name_generation;
 
         Brand::create([
             'brand_name' => $request->input('brand_name'),
@@ -92,12 +100,19 @@ class BrandController extends Controller
         $old_image = $request->input('old_image');
         $brand_image = $request->file('brand_image');
         if($brand_image){
-            $name_generation = hexdec(uniqid());
+            // $name_generation = hexdec(uniqid());
+            // $image_ext = strtolower($brand_image->getClientOriginalExtension());
+            // $image_name = $name_generation.'.'.$image_ext;
+            // $upload_location = 'image/brand/';
+            // $last_image = $upload_location.$image_name;
+            // $brand_image->move($upload_location, $image_name);
+
             $image_ext = strtolower($brand_image->getClientOriginalExtension());
-            $image_name = $name_generation.'.'.$image_ext;
+            $name_generation = hexdec(uniqid()).'.'.$image_ext;
             $upload_location = 'image/brand/';
-            $last_image = $upload_location.$image_name;
-            $brand_image->move($upload_location, $image_name);
+            Image::make($brand_image)->resize(300,200)->save($upload_location.$name_generation);
+            $last_image = $upload_location.$name_generation;
+
 
             unlink($old_image);
             $brand->update([
