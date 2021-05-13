@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use App\Models\User;
@@ -34,3 +35,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::resource('/category', CategoryController::class);
 Route::get('/category/restore/{category}', [CategoryController::class, 'Restore'])->name('category.restore');
 Route::post('/category/force-delete/{category}', [CategoryController::class, 'forceDelete'])->name('category.forceDelete');
+
+// Brand routes
+Route::resource('/brand', BrandController::class);
