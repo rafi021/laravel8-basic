@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MultipictureController;
 use App\Http\Controllers\PageController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,7 @@ Route::post('/category/force-delete/{category}', [CategoryController::class, 'fo
 
 // Brand routes
 Route::resource('/brand', BrandController::class);
+
+// Multi Image routes
+Route::get('/multi-image',[MultipictureController::class, 'index'])->name('multiimage.index');
+Route::post('/multi-image/store',[MultipictureController::class, 'store'])->name('multiimage.store');
