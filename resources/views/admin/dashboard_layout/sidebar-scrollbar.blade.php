@@ -20,8 +20,8 @@
             >
                 <div class="sub-menu">
                     <li class="active">
-                        <a class="sidenav-item-link" href="index.html">
-                            <span class="nav-text">Ecommerce</span>
+                        <a class="sidenav-item-link" href="{{ route('slider.index') }}">
+                            <span class="nav-text">Slider</span>
                         </a>
                     </li>
 

@@ -3,7 +3,19 @@
 
       <div class="carousel-inner" role="listbox">
 
-        <!-- Slide 1 -->
+        @foreach ($sliders as $key => $slider)
+        <div class="carousel-item {{ $key == 0 ? 'active': ''}}" style="background-image: url({{ asset($slider->image) }});">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>Welcome to <span>{{ $slider->title }}</span></h2>
+              <p>{{ $slider->description }}</p>
+              <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+
+        {{-- <!-- Slide 1 -->
         <div class="carousel-item active" style="background-image: url({{ asset('frontend') }}/assets/img/slide/slide-1.jpg);">
           <div class="carousel-container">
             <div class="carousel-content animate__animated animate__fadeInUp">
@@ -34,7 +46,7 @@
               <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
       </div>
 
