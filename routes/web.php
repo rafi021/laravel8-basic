@@ -18,14 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Load a page from Controller and using view
-Route::get('/about', [PageController::class, 'about'])->middleware('checkage')->name('about');
+Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::get('/home', [PageController::class, 'home'])->name('home');
+Route::get('/team', [PageController::class, 'team'])->name('team');
+Route::get('/testimonial', [PageController::class, 'testimonial'])->name('testimonial');
+Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
+Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $users = User::all();
