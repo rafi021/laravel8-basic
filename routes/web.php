@@ -29,7 +29,7 @@ Route::get('/home', [PageController::class, 'home'])->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $users = User::all();
-    return view('dashboard', compact('users'));
+    return view('admin.index', compact('users'));
 })->name('dashboard');
 
 // Category routes
