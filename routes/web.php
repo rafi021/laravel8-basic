@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MultipictureController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SliderController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Slider routes
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/slider', SliderController::class);
+    Route::resource('/service', ServiceController::class);
 });
 
 

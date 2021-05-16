@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class PageController extends Controller
     public function home()
     {
         $sliders = Slider::all();
-        return view('frontend.index', compact('sliders'));
+        $services = Service::latest()->limit(6)->get();
+        return view('frontend.index', compact('sliders','services'));
     }
 
     public function about()
@@ -35,7 +37,8 @@ class PageController extends Controller
 
     public function services()
     {
-        return view('frontend.services');
+        $services = Service::latest()->limit(6)->get();
+        return view('frontend.services', compact('services'));
     }
 
     public function portfolio()

@@ -26,9 +26,8 @@
                     </li>
 
                     <li>
-                        <a class="sidenav-item-link" href="analytics.html">
-                            <span class="nav-text">Analytics</span>
-
+                        <a class="sidenav-item-link" href="{{ route('service.index') }}">
+                            <span class="nav-text">Services</span>
                             <span class="badge badge-success">new</span>
                         </a>
                     </li>
