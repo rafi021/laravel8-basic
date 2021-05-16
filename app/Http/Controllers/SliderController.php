@@ -51,10 +51,13 @@ class SliderController extends Controller
             'description' => $request->input('description'),
             'image' => $last_image,
         ]);
+        
+        $notification = array(
+            'message' => 'Slider Created Successfully!!!',
+            'alert-type' => 'success',
+        );
 
-        return redirect()->route('slider.index')->with([
-            'success' => 'Slider created successfully!!!'
-        ]);
+        return redirect()->route('slider.index')->with($notification);
     }
 
     /**
@@ -113,9 +116,13 @@ class SliderController extends Controller
                 'description' => $request->input('description'),
             ]);
         }
-        return redirect()->route('slider.index')->with([
-            'success' => 'Slider updated successfully!!!'
-        ]);
+
+        $notification = array(
+            'message' => 'Slider Updated Successfully!!!',
+            'alert-type' => 'info',
+        );
+
+        return redirect()->route('slider.index')->with($notification);
     }
 
     /**
@@ -128,8 +135,12 @@ class SliderController extends Controller
     {
         unlink($slider->image);
         $slider->delete();
-        return redirect()->route('slider.index')->with([
-            'success' => 'Slider deleted successfully!!!'
-        ]);
+
+        $notification = array(
+            'message' => 'Slider Deleted Successfully!!!',
+            'alert-type' => 'warning',
+        );
+
+        return redirect()->route('slider.index')->with($notification);
     }
 }

@@ -42,9 +42,13 @@ class ServiceController extends Controller
             'description' => $request->input('description'),
             'icon' => $request->input('icon'),
         ]);
-        return redirect()->route('service.index')->with([
-            'success' => 'Service created successfully!!!'
-        ]);
+
+        $notification = array(
+            'message' => 'Service Created Successfully!!!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('service.index')->with($notification);
     }
 
     /**
@@ -83,10 +87,13 @@ class ServiceController extends Controller
             'description' => $request->input('description'),
             'icon' => $request->input('icon'),
         ]);
+        
+        $notification = array(
+            'message' => 'Service Updated Successfully!!!',
+            'alert-type' => 'info',
+        );
 
-        return redirect()->route('service.index')->with([
-            'success' => 'Service updated successfully!!!'
-        ]);
+        return redirect()->route('service.index')->with($notification);
     }
 
     /**
@@ -98,8 +105,10 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
-        return redirect()->route('service.index')->with([
-            'success' => 'Service deleted successfully!!!'
-        ]);
+        $notification = array(
+            'message' => 'Service Deleted Successfully!!!',
+            'alert-type' => 'warning',
+        );
+        return redirect()->route('service.index')->with($notification);
     }
 }

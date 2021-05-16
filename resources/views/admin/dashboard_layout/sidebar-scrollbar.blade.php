@@ -19,16 +19,20 @@
                 data-parent="#sidebar-menu"
             >
                 <div class="sub-menu">
-                    <li class="active">
-                        <a class="sidenav-item-link" href="{{ route('slider.index') }}">
-                            <span class="nav-text">Slider</span>
+                    <li class="{{ request()->routeIs('slider.index') ? 'active' : '' }}">
+                        <a class="sidenav-item-link" href="{{ route('slider.index') }}" >
+                            <span class="nav-text">{{ __('Slider') }}</span>
                         </a>
                     </li>
-
-                    <li>
+                    <li class="{{ request()->routeIs('service.index') ? 'active' : '' }}">
                         <a class="sidenav-item-link" href="{{ route('service.index') }}">
-                            <span class="nav-text">Services</span>
+                            <span class="nav-text">{{ __('Services') }}</span>
                             <span class="badge badge-success">new</span>
+                        </a>
+                    </li>
+                    <li class="{{ request()->routeIs('brand.index') ? 'active' : '' }}">
+                        <a class="sidenav-item-link" href="{{ route('brand.index') }}">
+                            <span class="nav-text">{{ __('Brand') }}</span>
                         </a>
                     </li>
                 </div>

@@ -8,12 +8,12 @@
                 <div class="card-header">
                     List of All Sliders
                 </div>
-                    @if (session('success'))
+                    {{-- @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Congrats!</strong> {{ session('success') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    @endif
+                    @endif --}}
                     <table class="table table-hover">
                         <thead>
                         <tr>

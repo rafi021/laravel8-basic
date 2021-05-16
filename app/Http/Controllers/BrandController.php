@@ -64,10 +64,13 @@ class BrandController extends Controller
             'brand_slug' => Str::slug($request->input('brand_name')),
             'brand_image' => $last_image,
         ]);
+        
+        $notification = array(
+            'message' => 'Brand Created Successfully!!!',
+            'alert-type' => 'success',
+        );
 
-        return redirect()->route('brand.index')->with([
-            'success' => 'Brand created successfully!!!'
-        ]);
+        return redirect()->route('brand.index')->with($notification);
     }
 
     /**
@@ -131,10 +134,12 @@ class BrandController extends Controller
             ]);
         }
         
+        $notification = array(
+            'message' => 'Brand Updated Successfully!!!',
+            'alert-type' => 'info',
+        );
 
-        return redirect()->route('brand.index')->with([
-            'success' => 'Brand updated successfully!!!'
-        ]);
+        return redirect()->route('brand.index')->with($notification);
     }
 
     /**
@@ -147,8 +152,12 @@ class BrandController extends Controller
     {
         unlink($brand->brand_image);
         $brand->delete();
-        return redirect()->route('brand.index')->with([
-            'success' => 'Brand deleted successfully!!!'
-        ]);
+
+        $notification = array(
+            'message' => 'Brand Deleted Successfully!!!',
+            'alert-type' => 'warning',
+        );
+
+        return redirect()->route('brand.index')->with($notification);
     }
 }
